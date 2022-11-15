@@ -43,7 +43,7 @@ namespace InventoryTests
 			inv.add_item(std::make_shared<InventoryItem>(InventoryItem("Sword")));
 
 			auto res = inv.get_item_in_slot(First_Slot);
-			Assert::AreEqual(res.has_value(), true);
+			Assert::IsTrue(res.has_value());
 			Assert::AreEqual(res.value()->get_name(), std::string("Sword"));
 		}
 
@@ -52,7 +52,7 @@ namespace InventoryTests
 			Inventory inv;
 
 			auto res = inv.get_item_in_slot(First_Slot);
-			Assert::AreEqual(res.has_value(), false);
+			Assert::IsFalse(res.has_value());
 		}
 
 		TEST_METHOD(GetSlotItemWithBadSlot)
@@ -60,10 +60,10 @@ namespace InventoryTests
 			Inventory inv;
 
 			auto res = inv.get_item_in_slot(High_Slot);
-			Assert::AreEqual(res.has_value(), false);
+			Assert::IsFalse(res.has_value());
 
 			res = inv.get_item_in_slot(Low_Slot);
-			Assert::AreEqual(res.has_value(), false);
+			Assert::IsFalse(res.has_value());
 		}
 
 		TEST_METHOD(AddItemDefault)
